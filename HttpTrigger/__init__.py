@@ -11,6 +11,7 @@ from .conversion.excel2csv import Excel2Csv
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
     credentials = MSIAuthentication(resource='https://vault.azure.net')
     kvclient = KeyVaultClient(credentials)
     key = kvclient.get_secret("https://mnanalyticssandbox-vault.vault.azure.net/", "sakey", "").value
